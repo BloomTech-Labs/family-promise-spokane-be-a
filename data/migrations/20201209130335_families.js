@@ -6,7 +6,7 @@ exports.up = function (knex) {
     tbl.increments();
 
     tbl
-      .string('user_id')
+      .string('head_of_household')
       .notNullable()
       .references('id')
       .inTable('users')

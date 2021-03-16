@@ -41,7 +41,7 @@ eg001EmbeddedSigning.createController = async (req, res) => {
       // staffEmail: staffEmail,
       // staffName: staffName,
       clientUserId: signerClientId,
-      dsReturnUrl: dsReturnUrl,
+      dsReturnUrl: `${dsReturnUrl}/${body.signer1Id}`,
       dsPingUrl: dsPingUrl,
     },
     args = {
