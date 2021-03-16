@@ -15,4 +15,3 @@ exports.grantAccess = function(action, resource) {
   }
  }
 }
- 

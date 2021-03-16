@@ -76,7 +76,7 @@ Family Promise REST API
 GET all logs: **/logs**
 
 HTTP Method: **[GET]**
- 
+
 **Example:**
 
     {

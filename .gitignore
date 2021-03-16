@@ -43,4 +43,4 @@ jspm_packages/
 private.key
 
 #commands for back end and database 
-txt
+txtsendgrid.env
