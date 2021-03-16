@@ -40,4 +40,4 @@ jspm_packages/
 .env.local
 
 #commands for back end and database 
-txt
+txtsendgrid.env
