@@ -1,5 +1,6 @@
 // The get all logs by family id is located in family router
 const express = require('express');
+const testMail = require('../sendGrid/profileCreation');
 
 const Logs = require('./logsModel');
 const router = express.Router();
@@ -55,6 +56,7 @@ router.get('/:id', function (req, res) {
 });
 
 router.post('/', async (req, res) => {
+  testMail;
   const logs = req.body;
   if (logs) {
     const id = logs['family_id'] || 0;

@@ -1,10 +1,10 @@
 const sgMail = require('@sendgrid/mail');
 
-
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 function profileCreation(body) {
   console.log('INFOMORATION NEEDED IN EMAIL', body);
+
   const msg = {
     to: `${body.email}`, // Change to your recipient
     from: `familypromiseteama@gmail.com`, // Change to your verified sender

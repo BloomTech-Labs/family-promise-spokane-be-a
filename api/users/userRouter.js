@@ -1,5 +1,6 @@
 const express = require('express');
 const authRequired = require('../middleware/authRequired');
+const testEmail = require('../sendGrid/profileCreation')
 // const checkRole = require('./userMiddleware')
 const Users = require('./userModel');
 const router = express.Router();
@@ -88,6 +89,8 @@ router.get(
 );
 
 router.post('/', authRequired, function (req, res) {
+  console.log('Found it');
+  testEmail(req.body);
   Users.findOrCreateProfile(req.body)
     .then(() => {
       res.status(201).json({ message: 'Profile created' });
