@@ -22,7 +22,7 @@ router.get('/', authRequired, function (req, res) {
 });
 
 // checkRole.grantAccess('readOwn', 'families'),
-router.get('/:id', authRequired, function (req, res) {
+router.get('/:id', function (req, res) {
   const id = String(req.params.id);
   Families.findById(id)
     .then((families) => {
