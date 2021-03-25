@@ -4,9 +4,10 @@ const authRequired = require('../middleware/authRequired');
 const Members = require('./membersModel');
 const router = express.Router();
 const Families = require('../families/familiesModel');
+const memberEdit = require('../sendGrid/memberEdit');
 
 // checkRole.grantAccess('readAny', 'members'),
-router.get('/', authRequired, function (req, res) {
+router.get('/', function (req, res) {
   Members.findAll()
     .then((members) => {
       res.status(200).json(members);
@@ -18,7 +19,7 @@ router.get('/', authRequired, function (req, res) {
 });
 
 // checkRole.grantAccess('readOwn', 'members'),
-router.get('/:id', authRequired, function (req, res) {
+router.get('/:id', function (req, res) {
   // let getData = async (id) => {
   //   const test = await axios.post(
   //     'http://a-labs29-family-promise.eba-syir5yx3.us-east-1.elasticbeanstalk.com/predict',
@@ -60,12 +61,14 @@ router.post('/', authRequired, async (req, res) => {
 // heckRole.grantAccess('updateOwn', 'members'),
 router.put('/:id', authRequired, (req, res) => {
   const members = req.body;
+  console.log(members);
   const id = req.params.id;
   if (members) {
     Members.findById(id)
       .then(
         Members.update(id, members)
           .then((updated) => {
+            memberEdit(members)
             res
               .status(200)
               .json({ message: 'member updated', members: updated[0] });
