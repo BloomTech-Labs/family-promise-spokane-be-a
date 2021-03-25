@@ -7,7 +7,7 @@ const Families = require('../families/familiesModel');
 const memberEdit = require('../sendGrid/memberEdit');
 
 // checkRole.grantAccess('readAny', 'members'),
-router.get('/', function (req, res) {
+router.get('/', authRequired, function (req, res) {
   Members.findAll()
     .then((members) => {
       res.status(200).json(members);
@@ -19,7 +19,7 @@ router.get('/', function (req, res) {
 });
 
 // checkRole.grantAccess('readOwn', 'members'),
-router.get('/:id', function (req, res) {
+router.get('/:id', authRequired, function (req, res) {
   // let getData = async (id) => {
   //   const test = await axios.post(
   //     'http://a-labs29-family-promise.eba-syir5yx3.us-east-1.elasticbeanstalk.com/predict',
