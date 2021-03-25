@@ -2,7 +2,7 @@ const sgMail = require('@sendgrid/mail');
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-function testEmail(body) {
+function profileCreation(body) {
   console.log('INFOMORATION NEEDED IN EMAIL', body);
 
   const msg = {
@@ -24,4 +24,4 @@ function testEmail(body) {
     });
 }
 
-module.exports = testEmail;
+module.exports = profileCreation;

@@ -1,6 +1,7 @@
 const express = require('express');
 const authRequired = require('../middleware/authRequired');
 const restrictTo = require('../middleware/restrictTo');
+const profileEdit = require('../sendGrid/profileEdit');
 // const checkRole = require('./familiesMiddleware');
 const Families = require('./familiesModel');
 
@@ -146,6 +147,7 @@ router.put('/:id', authRequired, (req, res) => {
       .then(
         Families.update(id, families)
           .then((updated) => {
+            profileEdit(families);
             res
               .status(200)
               .json({ message: 'Family updated', families: updated[0] });
