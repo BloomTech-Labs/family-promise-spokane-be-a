@@ -16,8 +16,8 @@ const findByOktaId = async (okta_id) => {
   return db('users').where({ okta_id });
 };
 
-const findFamilyByUserId = (head_of_household) => {
-  return db('families').where({ head_of_household }).returning('*');
+const findFamilyByUserId = (user_id) => {
+  return db('families').where({ user_id }).returning('*');
 };
 
 const create = async (profile) => {
